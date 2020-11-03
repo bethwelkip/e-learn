@@ -1,3 +1,4 @@
-./virtual/
+virtual
 *.sh
 *.pyc
+instance/
