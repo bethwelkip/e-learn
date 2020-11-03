@@ -1,9 +1,8 @@
-#add necessary imports
-#add routes
-
+from flask import render_template,request,redirect,url_for,abort
+from . import main
+@main.route('/')
 def index():
-    #Dorcas: how would you like the front end
-    pass
+    return render_template('index.html')
 
 
 def receive_question():
