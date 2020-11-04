@@ -39,5 +39,4 @@ def exam_questions():
     if form.validate_on_submit():
        Subject= form.Subject.data
        Answer = form.Answer.data 
-       answers= (form.A.data, from.B.data,form.C.data, form.D.data)
-       
+       answers= (form.A.data, form.B.data,form.C.data, form.D.data)
