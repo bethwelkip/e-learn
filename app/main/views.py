@@ -1,3 +1,6 @@
+from flask import render_template,request,redirect,url_for,abort, flash, abort
+from . import main
+from .forms import  quizForm
 
 #add necessary imports
 #add routes
@@ -32,4 +35,9 @@ def sign_up():
 
 @main.route('/e-learn/Technicalsupport/', methods=['POST','GET'])
 def exam_questions():
-    form 
+    form = quizForm()
+    if form.validate_on_submit():
+       Subject= form.Subject.data
+       Answer = form.Answer.data 
+       answers= (form.A.data, from.B.data,form.C.data, form.D.data)
+       
