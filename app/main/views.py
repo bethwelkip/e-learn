@@ -1,3 +1,4 @@
+
 #add necessary imports
 #add routes
 
@@ -28,3 +29,7 @@ def sign_up():
 #     #to implement later
 #     #might have forgotten some stuff. please list here
 #     pass
+
+@main.route('/e-learn/Technicalsupport/', methods=['POST','GET'])
+def exam_questions():
+    form 
