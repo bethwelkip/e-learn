@@ -1,3 +1,4 @@
+
 #add necessary imports
 #add routes
 from flask import  render_template, request, url_for, abort
@@ -11,6 +12,10 @@ from twilio.twiml.messaging_response import MessagingResponse
 @main.route('/')
 def index():
     return render_template('index.html')
+@main.route('/student')
+def student():
+    return render_template('student.html')
+
 
 @main.route('/question', methods= ['POST'])
 def receive_question():
