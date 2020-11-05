@@ -2,7 +2,7 @@ from flask import  render_template, request, url_for, abort
 from . import main
 # from .fill_db import questionAnswerTuples
 from .. import db
-from ..models import Question
+from ..models import Question,Answer
 from .forms import quizForm
 from twilio import Twilio
 from twilio.twiml.messaging_response import MessagingResponse
@@ -47,8 +47,19 @@ def exam_questions():
     form = quizForm()
     if form.validate_on_submit():
        subject= form.Subject.data
-       question= form.Question.data
        answer = form.Answer.data 
-       answers= (form.A.data, form.B.data,form.C.data, form.D.data)
+       grade = form.Grade.data
+       question = form.question.data + "\n" + "A"+ form.A.data + "\n" + "B"+ form.B.data + "\n" + "C"+ form.C.data + "\n" + "D"+ form.C.data + "\n"
+       newQuiz = Question(question = question,subject = subject,grade = grade)
+       db.session.add(newQuiz)
+       db.session.commit()
 
-       newquiz= Question(question=question, subject=subject,answer=answer)
+       newAnsw = Answer(answer = answer)
+       db.session.add(newAnsw)
+       db.session.commit()
+
+def login():
+    pass 
+
+def signUp()
+

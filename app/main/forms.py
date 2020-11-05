@@ -14,3 +14,8 @@ class quizForm(FlaskForm):
     Answer= TextAreaField('Answer', validators=[Required()])
     Submit =SubmitField('Submit')
 
+class loginForm(FlaskForm):
+    email = StringField('Your email address', validators=[Required(), Email()])
+    password = PasswordField('Enter your password', validators=[Required()])
+    remember = BooleanField('Remember me')
+    submit = SubmitField('Sign In')
