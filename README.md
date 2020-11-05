@@ -1,7 +1,7 @@
 # Title
 ## TUSOME e-learning
 
-# Authours
+# Authors
 * Paulyne Wambui
 * Bethwel Kiplimo 
 * Ronald Kiprotich
