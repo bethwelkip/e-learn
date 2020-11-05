@@ -29,6 +29,8 @@ This is the link to the figma design https://www.figma.com/proto/9O8yKO8jWSkOXWG
 
 # Screenshot
 
+![learn](https://user-images.githubusercontent.com/69419673/98296901-af4c5b00-1fc4-11eb-9224-d5224789a589.png)
+
 # Technologies Used 
 * Python 
 * HTML
