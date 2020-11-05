@@ -3,6 +3,7 @@ from sqlalchemy.sql import func
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import login_manager
 
+
 class Student(db.Model):
     __tablename__ ="students"
     student_id = db.Column(db.Integer, primary_key = True)
@@ -38,7 +39,6 @@ class Admin(db.Model):
     def __repr__(self):
         return f'User {self.username}'
 
-
 class Question(db.Model):
     __tablename__ ="questions"
     question_id = db.Column(db.Integer, primary_key = True)
@@ -61,4 +61,3 @@ class CurrentQuestion(db.Model):
     subject = db.Column(db.String(255))
     grade = db.Column(db.Integer)
     seen = db.Column(db.Boolean)
-    answer = db.Column(db.Integer,db.ForeignKey('students.student_id'))
