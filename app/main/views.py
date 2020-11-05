@@ -1,11 +1,10 @@
 
-from flask import  render_template, request, url_for, abort, redirect
+from flask import  render_template, request, url_for, abort, redirect,flash
 from . import main
 from .fill_db import questionAnswerTuples
 from .. import db
 from ..models import Question,Answer, Admin, Student
 from .forms import quizForm, loginForm, RegistrationForm
-from twilio import Twilio
 from twilio.twiml.messaging_response import MessagingResponse
 
 @main.route('/')
@@ -80,7 +79,7 @@ def login():
             login_user(user, form.remember.data)
             return redirect(request.args.get('next') or url_for('main.exam_questions'))
         flash ('Invalid username or password')
-    return render_template('template', form=form)
+    return render_template('login.html', form=form)
 @main.route('/e-learn/signup', methods=['POST', 'GET'])
 def signUp():
     form= RegistrationForm()
@@ -88,9 +87,8 @@ def signUp():
         user = Student(name=form.name.data, phone=form.mobile_phone.data)
         db.session.add(user)
         db.session.commit()
-        return redirect(url_for('main.student'))
-
-    return render_template('template', form= form)
+        return redirect(url_for('main.student'))  
+    return render_template('signup.html', form= form)
 
 # @main.route('/teacher/question')
 # def submit_question():
