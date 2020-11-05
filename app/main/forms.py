@@ -1,7 +1,8 @@
 from flask_wtf import FlaskForm
-from wtforms import RadioField, TextAreaField,StringField, PasswordField, SubmitField, BooleanField
+from wtforms import RadioField, TextAreaField,StringField, PasswordField, SubmitField, BooleanField,FormField
 from wtforms.validators import Required, Email, EqualTo
 from wtforms import ValidationError
+from ..models import Student
 
 class quizForm(FlaskForm):
     Grade = StringField('Grade', validators=[Required()])
@@ -22,5 +23,9 @@ class loginForm(FlaskForm):
 
 class RegistrationForm(FlaskForm):
     name = StringField('Enter your username',validators = [Required()])
-    mobile_phone = FormField('Enter your phone.no',validators = [Required()])
+    mobile_phone = StringField('Enter your phone.no')
     submit = SubmitField('Sign Up')
+
+    def validate_phone(self,data_field):
+        if Student.query.filter_by(phone =data_field.data).first():
+            raise ValidationError('Phone number already taken. Send join egg-unusual to +1415 523 8886 to start learning!')

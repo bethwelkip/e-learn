@@ -2,13 +2,17 @@ from . import db
 from sqlalchemy.sql import func
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import login_manager
+from flask_login import UserMixin
 
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
-class Student(db.Model):
+class Student(UserMixin,db.Model):
     __tablename__ ="students"
     student_id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String(255))
-    phone = db.Column(db.Integer)
+    phone = db.Column(db.Integer,unique = True)
     questions = db.Column(db.ARRAY(db.String))
 
     def get_id(self):
