@@ -31,7 +31,6 @@ def receive_question():
         print(questions)
         current_subject = msg
         for question in questions:
-            print(resp)
             resp = resp + "\n" + question.question
         print(resp)
         response.message(resp)
