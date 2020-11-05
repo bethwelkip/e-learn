@@ -9,7 +9,7 @@
 * Dorcas Cherono
 
 # Description
-## This is an amazing application ment to educate students of different grades study. You need to sign in in the application. Select your grade, select the subject you want to do the questions. after  completion you send your answers and in return get the correct answers.
+This is an amazing application ment to educate students of different grades study. You need to sign in in the application. Select your grade, select the subject you want to do the questions. after  completion you send your answers and in return get the correct answers.
 
 # Setup/Installation Requirements
 First clone the repo $ git clone https://github.com/bethwelkip/e-learn.git
