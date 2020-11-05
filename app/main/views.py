@@ -29,6 +29,10 @@ def receive_question():
         print(msg)
         questions = Question.query.filter_by(subject = msg).all()
         print(questions)
+        for question in questions:
+            question.seen = True
+            db.session.commit()
+                    
         current_subject = msg
         for question in questions:
             resp = resp + "\n" + question.question
