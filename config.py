@@ -2,8 +2,8 @@ import os
 
 class Config:
     SECRET_KEY = os.environ.get('SECRET_KEY')
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:access@localhost/elearn'
-#     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://bethwelkiplimo:password@localhost/elearn'
+    # SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:access@localhost/elearn'
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://bethwelkiplimo:password@localhost/elearn'
     SQLALCHEMY_TRACK_MODIFICATIONS  = False
 
     #  email configurations
@@ -14,7 +14,8 @@ class Config:
 
 
 class ProdConfig(Config):
-    pass
+    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
+
 
 
 class DevConfig(Config):

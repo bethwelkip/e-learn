@@ -15,10 +15,10 @@ def index():
 def student():
     return render_template('student.html')
 
-
 @main.route('/question', methods= ['POST'])
 def receive_question():
-    # questionAnswerTuples()
+    if not Question.query.filter_by(seen = False).all():
+        questionAnswerTuples()
     msg = request.form.get('Body').lower()
     user = request.form.get('From').lower()
     print(user)
@@ -32,7 +32,6 @@ def receive_question():
     if msg == "join egg-unusual" or msg == "hi":
         response.message(text[0])
     elif msg in subjects:
-        print(msg)
         questions = Question.query.filter_by(subject = msg).all()
         if len(questions)>5:
             questions = questions[0:5]
