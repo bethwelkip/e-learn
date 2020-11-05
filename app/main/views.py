@@ -1,6 +1,6 @@
 from flask import  render_template, request, url_for, abort, redirect
 from . import main
-# from .fill_db import questionAnswerTuples
+from .fill_db import questionAnswerTuples
 from .. import db
 from ..models import Question,Answer, Admin, Student
 from .forms import quizForm, loginForm, RegistrationForm
