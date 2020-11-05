@@ -5,6 +5,7 @@ from wtforms import ValidationError
 
 class quizForm(FlaskForm):
     Subject=RadioField('Label', choices=[('English', 'English'),('Science', 'Science'),('Kiswahili','Kiswahili'),('Math','Math')],validators=[Required()])
+    Question=TextAreaField('Question', validators=[Required()])
     A= TextAreaField('A', validators=[Required()])
     B= TextAreaField('B', validators=[Required()])
     C= TextAreaField('C', validators=[Required()])
