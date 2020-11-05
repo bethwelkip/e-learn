@@ -3,7 +3,7 @@ from ..models import Question
 
 def questionAnswerTuples():
     questions = [("What is 300 + 500? =\n A. 600\n B. 800\n C. 400\n D. 700\n","B","4","math" ),
-    ("What is 6.6 + 2.0? =\n A. 8.6\n B. 8.0\n C. 7.0\n D. 7.4\n"," A","4","math" ),
+    ("What is 6.6 + 2.0? =\n A. 8.6\n B. 8.0\n C. 7.0\n D. 7.4\n","A","4","math" ),
     (" What is 56/7 =\n A. 0\n B. 8\n C. 7\n D. 9\n","8","4","math" ),
     ("What answer fits in the blank space: 3.146 kg = ______ g?=\n A. 3100\n B. 3200\n C. 3300\n D. 3146\n","D","4","math" ),
     ("__ + 8,700 = 9,000=\n A. 16700\n B. 300\n C. 2000\n D. 500\n","B","4","math" ),
@@ -23,6 +23,7 @@ def questionAnswerTuples():
     ("Chakula cha mchana huitwa?\n A. cold front\n A. kiacha kinywa\n  B. kishuka\n C. ugali\n D. staftahi\n","B","4","Kiswahili" ),
     ("Dada yake mama utamwita?\n A. mjomba\n B. halati\n C. shangazi\n D. wifi\n","A","4","Kiswahili" )
     ]
+
     for question, answer, grade, subject in questions:
         q = Question(question = question, answer = answer, grade = grade, subject = subject.lower())
         db.session.add(q)
