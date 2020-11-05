@@ -7,7 +7,7 @@ from ..models import Student
 class quizForm(FlaskForm):
     Grade = StringField('Grade', validators=[Required()])
     Subject=RadioField('Label', choices=[('English', 'English'),('Science', 'Science'),('Kiswahili','Kiswahili'),('Math','Math')],validators=[Required()])
-    Question=TextAreaField('Question', validators=[Required()])
+    question=TextAreaField('Question', validators=[Required()])
     A= TextAreaField('A', validators=[Required()])
     B= TextAreaField('B', validators=[Required()])
     C= TextAreaField('C', validators=[Required()])

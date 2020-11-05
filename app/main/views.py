@@ -61,15 +61,17 @@ def exam_questions():
        subject= form.Subject.data
        answer = form.Answer.data 
        grade = form.Grade.data
+
        question = form.question.data + "\n" + "A"+ form.A.data + "\n" + "B"+ form.B.data + "\n" + "C"+ form.C.data + "\n" + "D"+ form.C.data + "\n"
        newQuiz = Question(question = question,subject = subject,grade = grade)
        db.session.add(newQuiz)
        db.session.commit()
-       newAnsw = Answer(answer = answer)
+       question = Question.query.filter_by(question = question).first()
+       newAnsw = Answer(answer = answer,question_id =question.question_id )
        db.session.add(newAnsw)
        db.session.commit()
-       return redirect(url_for('main.exam_question'))
-    return render_template('template')
+       return redirect(url_for('main.exam_questions'))
+    return render_template('questions.html',form = form)
 @main.route('/e-learn/login/', methods=['POST', 'GET'])
 def login():
     form= loginForm()
