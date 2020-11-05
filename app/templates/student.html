@@ -1,20 +1,41 @@
 {% extends 'base.html'%}
 {%block content%}
-<div style="font-size: 20px; font-family: 'Itim', cursive;">
-<!-- Jumbotron -->
-<div class="card card-image" style="background-image: url(https://mdbootstrap.com/img/Photos/Others/forest2.jpg);">
-    <div class="text-white text-center rgba-stylish-strong py-5 px-4">
-      <div class="py-5">
-  
-        <!-- Content -->
-        <h5 class="h5 orange-text"><i class="fas fa-camera-retro"></i> Photography</h5>
-        <h2 class="card-title h2 my-4 py-2">Jumbotron with image overlay</h2>
-        <p class="mb-4 pb-2 px-md-5 mx-md-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur obcaecati vero aliquid libero doloribus ad, unde tempora maiores, ullam, modi qui quidem minima debitis perferendis vitae cumque et quo impedit.</p>
-        <a class="btn peach-gradient"><i class="fas fa-clone left"></i> View project</a>
-  
-      </div>
+<div class="container-fluid" style="font-size: 20px; font-family: 'Itim', cursive;
+    background-image: url(../static/photos/back2.jpeg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        
+    ">
+    <div>
+        <h1 class=" text-white text-center pt-5">Welcome to e-learn platform Precious and very bright student</h1>
     </div>
-  </div>
-  <!-- Jumbotron -->
+    <div class="text-center">
+        <img class="img-fluid" src="../static/photos/online.jpeg" style="width:500px;height:300px;">
+    </div>
+    <h1 class="text-center pt-5 text-white" >Let's get Started</h1>
+    <div class="row text-white">
+        <div class="col md-6">
+            
+                <div >
+                <h2 class="display-4">Twilio</h2>
+                <ul>
+                    <li >
+                        To access questions on whatsapp you will be required to text the word <span class="text-danger"><em>"join egg-unusual" </em></span> to the number <span class="text-success">+1 (415) 523-8886.</span>
+                    </li>
+                    <li>
+                        Twilio session ends after every 24 hrs which basically means that you are required to retext the word anytime you want to access twilio services.
+                    </li>
+                    <li>
+                        Note that you are not eligible to receive our services if you are not registered in our website.
+                    </li>
+                </ul>
+
+                </div>
+    
+        </div>
+        
+    </div>
+    
 </div>
   {%endblock%}
