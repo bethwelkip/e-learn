@@ -38,5 +38,6 @@ def exam_questions():
     form = quizForm()
     if form.validate_on_submit():
        Subject= form.Subject.data
+       Question= form.Question.data
        Answer = form.Answer.data 
        answers= (form.A.data, form.B.data,form.C.data, form.D.data)
