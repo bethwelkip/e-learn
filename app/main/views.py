@@ -1,9 +1,9 @@
-from flask import  render_template, request, url_for, abort
+from flask import  render_template, request, url_for, abort, redirect
 from . import main
 # from .fill_db import questionAnswerTuples
 from .. import db
-from ..models import Question,Answer
-from .forms import quizForm
+from ..models import Question,Answer, Admin, Student
+from .forms import quizForm, loginForm, RegistrationForm
 from twilio import Twilio
 from twilio.twiml.messaging_response import MessagingResponse
 
@@ -53,13 +53,29 @@ def exam_questions():
        newQuiz = Question(question = question,subject = subject,grade = grade)
        db.session.add(newQuiz)
        db.session.commit()
-
        newAnsw = Answer(answer = answer)
        db.session.add(newAnsw)
        db.session.commit()
-
+       return redirect(url_for('main.exam_question'))
+    return render_template('template')
+@main.route('/e-learn/login/', methods=['POST', 'GET'])
 def login():
-    pass 
+    form= loginForm()
+    if form.validate_on_submit():
+        user = Admin.query.filter_by(email= form.email.data).first()
+        if user is not None and user.verify_password(form.password.data):
+            login_user(user, form.remember.data)
+            return redirect(request.args.get('next') or url_for('main.exam_questions'))
+        flash ('Invalid username or password')
+    return render_template('template', form=form)
+@main.route('/e-learn/signup', methods=['POST', 'GET'])
+def signUp():
+    form= RegistrationForm()
+    if form.validate_on_submit():
+        user = Student(name=form.name.data, phone=form.mobile_phone.data)
+        db.session.add(user)
+        db.session.commit()
+        return redirect(url_for('main.student'))
 
-def signUp()
+    return render_template('template', form= form)
 
