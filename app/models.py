@@ -41,4 +41,3 @@ class CurrentQuestion(db.Model):
     subject = db.Column(db.String(255))
     grade = db.Column(db.Integer)
     seen = db.Column(db.Boolean)
-    answer = db.Column(db.Integer,db.ForeignKey('students.student_id'))

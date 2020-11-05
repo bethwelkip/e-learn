@@ -3,4 +3,5 @@ virtual/
 *.sh
 *.pyc
 instance/config.py
+start.sh
 
