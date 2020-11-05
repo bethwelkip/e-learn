@@ -4,7 +4,7 @@ from flask import  render_template, request, url_for, abort
 from . import main
 from .fill_db import questionAnswerTuples
 from .. import db
-from ..models import Question
+from ..models import Question, Answer
 # from twilio import Twilio
 from twilio.twiml.messaging_response import MessagingResponse
 
@@ -14,7 +14,7 @@ def index():
 
 @main.route('/question', methods= ['POST'])
 def receive_question():
-  
+    # questionAnswerTuples()
     msg = request.form.get('Body').lower()
     user = request.form.get('From').lower()
     print(user)
@@ -30,14 +30,21 @@ def receive_question():
     elif msg in subjects:
         print(msg)
         questions = Question.query.filter_by(subject = msg).all()
-        current_subject = msg
+        if len(questions)>5:
+            questions = questions[0:5]
         for question in questions:
+            question.seen = True
+            db.session.commit()
             resp = resp + "\n" + question.question
         response.message(resp)
-    elif msg == "done":
-        questions = Question.query.filter_by(subject = "math").all()
+    elif msg.lower() == "done":
+        questions = Question.query.filter_by(seen = True).all()
+        print(questions)
         for question in questions:
-            resp = resp + "\n" + question.answer
+            question.seen = False
+            db.session.commit()
+            answer = Answer.query.filter_by(question_id = question.question_id).first()
+            resp = resp + "\n" + answer.answer
         response.message(resp)
     else:
         response.message(text[1])
