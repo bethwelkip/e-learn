@@ -1,5 +1,5 @@
 from .. import db
-from ..models import Question
+from ..models import Question, Answer
 
 def questionAnswerTuples():
     questions = [("What is 300 + 500? =\n A. 600\n B. 800\n C. 400\n D. 700\n","B","4","math" ),
@@ -24,7 +24,12 @@ def questionAnswerTuples():
     ("Dada yake mama utamwita?\n A. mjomba\n B. halati\n C. shangazi\n D. wifi\n","A","4","Kiswahili" )
     ]
 
+
     for question, answer, grade, subject in questions:
-        q = Question(question = question, answer = answer, grade = grade, subject = subject.lower())
+        q = Question(question = question, grade = grade, subject = subject.lower(), seen = False)
         db.session.add(q)
+        db.session.commit()
+        ques = Question.query.filter_by(question = question).first()
+        ans = Answer(answer = answer, question_id = ques.question_id)
+        db.session.add(ans)
         db.session.commit()
