@@ -28,11 +28,9 @@ def receive_question():
     elif msg in subjects:
         print(msg)
         questions = Question.query.filter_by(subject = msg).all()
-        print(questions)
         current_subject = msg
         for question in questions:
             resp = resp + "\n" + question.question
-        print(resp)
         response.message(resp)
     elif msg == "done":
         questions = Question.query.filter_by(subject = "math").all()
