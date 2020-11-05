@@ -12,3 +12,4 @@ class quizForm(FlaskForm):
     D= TextAreaField('D', validators=[Required()])
     Answer= TextAreaField('Answer', validators=[Required()])
     Submit =SubmitField('Submit')
+
