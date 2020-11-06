@@ -33,13 +33,16 @@ def receive_question():
         response.message(text[0])
     elif msg in subjects:
         questions = Question.query.filter_by(subject = msg).all()
-        if len(questions)>5:
-            questions = questions[0:5]
-        for question in questions:
-            question.seen = True
-            db.session.commit()
-            resp = resp + "\n" + question.question
-        response.message(resp)
+        if not questions:
+            response.message(f"We currently don't have any questions for the subject {msg}. Check back in a day or two.")
+        else:
+            if len(questions)>5:
+                questions = questions[0:5]
+            for question in questions:
+                question.seen = True
+                db.session.commit()
+                resp = resp + "\n" + question.question
+            response.message(resp)
     elif msg.lower() == "done":
         questions = Question.query.filter_by(seen = True).all()
         print(questions)
@@ -60,8 +63,7 @@ def exam_questions():
        subject= form.Subject.data
        answer = form.Answer.data 
        grade = form.Grade.data
-
-       question = form.question.data + "\n" + "A"+ form.A.data + "\n" + "B"+ form.B.data + "\n" + "C"+ form.C.data + "\n" + "D"+ form.C.data + "\n"
+       question = form.question.data + "\n" + "A. "+ form.A.data + "\n" + "B. "+ form.B.data + "\n" + "C. "+ form.C.data + "\n" + "D. "+ form.C.data + "\n"
        newQuiz = Question(question = question,subject = subject,grade = grade)
        db.session.add(newQuiz)
        db.session.commit()
