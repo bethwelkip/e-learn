@@ -9,7 +9,7 @@
 * Dorcas Cherono
 
 # Description
-## This is an amazing application ment to educate students of different grades study. You need to sign in in the application. Select your grade, select the subject you want to do the questions. after  completion you send your answers and in return get the correct answers.
+This is an amazing application ment to educate students of different grades study. You need to sign in in the application. Select your grade, select the subject you want to do the questions. after  completion you send your answers and in return get the correct answers.
 
 # Setup/Installation Requirements
 First clone the repo $ git clone https://github.com/bethwelkip/e-learn.git
@@ -28,6 +28,8 @@ Now navigate to your browser at: localhost://127.0.0.15000/
 This is the link to the figma design https://www.figma.com/proto/9O8yKO8jWSkOXWGd17SLLY/e-learning?node-id=1%3A2&viewport=409%2C173%2C0.2896341383457184&scaling=scale-down
 
 # Screenshot
+
+![learn](https://user-images.githubusercontent.com/69419673/98296901-af4c5b00-1fc4-11eb-9224-d5224789a589.png)
 
 # Technologies Used 
 * Python 
